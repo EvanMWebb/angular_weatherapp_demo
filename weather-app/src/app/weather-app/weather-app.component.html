@@ -6,7 +6,10 @@
         <h3>
             Weather App Using Angular
         </h3>
-        <input type="text" [(ngModel)]="cityName" placeholder="Enter city name">
+        <input type="text" [(ngModel)]="zipCode" placeholder="Enter zip code">
+        <!--<input type="text" [(ngModel)]="cityName" placeholder="Enter city name">
+        <input type="text" [(ngModel)]="stateCode" placeholder="Enter state name">
+        <input type="text" [(ngModel)]="countryCode" placeholder="Enter country">-->
         <button (click)="getWeather()">Get Weather</button>
 
         <div *ngIf="loading" class="loading">
@@ -19,12 +22,14 @@
 
         <div *ngIf="weatherData" class="animate_animated animate_fadeIn" id="weather-info">
             <h3 id="city-name">{{ weatherData.name }}</h3>
+            <p id="state-name">{{ weatherData.state }}</p>
+            <p id="country-name">{{ weatherData.country }}</p>
             <p id="date">{{ currentDate }}</p>
             <img [src]="iconUrl" alt="Weather Icon" id="weather-icon">
             <p id="temperature">{{ weatherData.main.temp }}°F</p>
             <p id="description">{{ weatherData.weather[0].description }}</p>
-            <p id="humidity">Humidity: {{ weatherData.humidity }}%</p>
-            <p id="wind-speed">Wind Speed: {{ weatherData.wind.speed }} m/s</p>
+            <p id="humidity">Humidity: {{ weatherData.main.humidity }}%</p>
+            <p id="wind-speed">Wind Speed: {{ weatherData.wind.speed }} mph</p>
         </div>
     </div>
 </div>

@@ -9,7 +9,10 @@ import moment from 'moment';
   styleUrl: './weather-app.component.css'
 })
 export class WeatherAppComponent implements OnInit {
-    cityName: string = 'Pune';
+    cityName: string = '';
+    stateCode: string = '';
+    countryCode: string = '';
+    zipCode: string = '';
     weatherData: any;
     iconUrl: string = '';
     currentDate: string = '';
@@ -28,7 +31,8 @@ export class WeatherAppComponent implements OnInit {
     getWeather(): void {
       this.loading = true;
       this.error = '';
-      const fullUrl = `${this.url}?q=${this.cityName}&appid=${this.apiKey}&units=imperial`;
+      //const fullUrl = `${this.url}?q=${this.cityName},${this.stateCode},${this.countryCode}&appid=${this.apiKey}&units=imperial`;
+      const fullUrl = `${this.url}?q=${this.zipCode}&appid=${this.apiKey}&units=imperial`;
       this.http.get(fullUrl).subscribe(
         (data: any) => {
           this.weatherData = data;
